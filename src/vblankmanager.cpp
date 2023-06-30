@@ -170,7 +170,7 @@ void vblankThreadRun( void )
 		ssize_t ret = write( g_vblankPipe[ 1 ], &vblanktime, sizeof( vblanktime ) );
 		if ( ret <= 0 )
 		{
-			perror( "vblankmanager: write failed" );
+			//perror( "vblankmanager: write failed" );
 		}
 		else
 		{
@@ -200,7 +200,7 @@ void vblankThreadVR()
 		ssize_t ret = write( g_vblankPipe[ 1 ], &vblanktime, sizeof( vblanktime ) );
 		if ( ret <= 0 )
 		{
-			perror( "vblankmanager: write failed" );
+			//perror( "vblankmanager: write failed" );
 		}
 		else
 		{
