@@ -110,7 +110,7 @@ void inputSDLThreadRun( void )
 
 	g_unSDLUserEventID = SDL_RegisterEvents( USER_EVENT_COUNT );
 
-	uint32_t nSDLWindowFlags = SDL_WINDOW_VULKAN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIDDEN | SDL_WINDOW_ALLOW_HIGHDPI;
+	uint32_t nSDLWindowFlags = SDL_WINDOW_VULKAN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI;
 
 	if ( g_bBorderlessOutputWindow == true )
 	{
@@ -158,6 +158,13 @@ void inputSDLThreadRun( void )
 	SDL_Surface *cursor_surface = nullptr;
 	SDL_Surface *icon_surface = nullptr;
 	SDL_Cursor *cursor = nullptr;
+
+	// fix input bug
+	//SDL_MaximizeWindow(g_SDLWindow);
+	//SDL_MinimizeWindow(g_SDLWindow);
+	//SDL_RestoreWindow(g_SDLWindow);
+	SDL_SetWindowSize(g_SDLWindow, g_nOutputWidth, g_nOutputHeight + 1);
+	SDL_SetWindowSize(g_SDLWindow, g_nOutputWidth, g_nOutputHeight);
 
 	while( SDL_WaitEvent( &event ) )
 	{
